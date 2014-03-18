@@ -1,0 +1,149 @@
+
+main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+30000000 <_start>:
+30000000:	ea00000d 	b	3000003c <reset>
+30000004:	e59ff014 	ldr	pc, [pc, #20]	; 30000020 <_undefined_instruction>
+30000008:	e59ff014 	ldr	pc, [pc, #20]	; 30000024 <_soft_interrupt>
+3000000c:	e59ff014 	ldr	pc, [pc, #20]	; 30000028 <_prefetch_abort>
+30000010:	e59ff014 	ldr	pc, [pc, #20]	; 3000002c <_data_abort>
+30000014:	e59ff014 	ldr	pc, [pc, #20]	; 30000030 <_not_used>
+30000018:	e59ff014 	ldr	pc, [pc, #20]	; 30000034 <_irq>
+3000001c:	e59ff014 	ldr	pc, [pc, #20]	; 30000038 <_fiq>
+
+30000020 <_undefined_instruction>:
+30000020:	300000e4 	.word	0x300000e4
+
+30000024 <_soft_interrupt>:
+30000024:	300000e8 	.word	0x300000e8
+
+30000028 <_prefetch_abort>:
+30000028:	300000ec 	.word	0x300000ec
+
+3000002c <_data_abort>:
+3000002c:	300000f0 	.word	0x300000f0
+
+30000030 <_not_used>:
+30000030:	300000f4 	.word	0x300000f4
+
+30000034 <_irq>:
+30000034:	300000f8 	.word	0x300000f8
+
+30000038 <_fiq>:
+30000038:	300000fc 	.word	0x300000fc
+
+3000003c <reset>:
+3000003c:	e10f0000 	mrs	r0, CPSR
+30000040:	e3c0001f 	bic	r0, r0, #31
+30000044:	e38000d3 	orr	r0, r0, #211	; 0xd3
+30000048:	e129f000 	msr	CPSR_fc, r0
+3000004c:	e3e0d10f 	mvn	sp, #-1073741821	; 0xc0000003
+30000050:	e10f0000 	mrs	r0, CPSR
+30000054:	e3c0001f 	bic	r0, r0, #31
+30000058:	e38000d2 	orr	r0, r0, #210	; 0xd2
+3000005c:	e129f000 	msr	CPSR_fc, r0
+30000060:	e59fd098 	ldr	sp, [pc, #152]	; 30000100 <fiq+0x4>
+30000064:	e10f0000 	mrs	r0, CPSR
+30000068:	e3c0001f 	bic	r0, r0, #31
+3000006c:	e38000d1 	orr	r0, r0, #209	; 0xd1
+30000070:	e129f000 	msr	CPSR_fc, r0
+30000074:	e59fd088 	ldr	sp, [pc, #136]	; 30000104 <fiq+0x8>
+30000078:	e10f0000 	mrs	r0, CPSR
+3000007c:	e3c0001f 	bic	r0, r0, #31
+30000080:	e38000d7 	orr	r0, r0, #215	; 0xd7
+30000084:	e129f000 	msr	CPSR_fc, r0
+30000088:	e59fd078 	ldr	sp, [pc, #120]	; 30000108 <fiq+0xc>
+3000008c:	e10f0000 	mrs	r0, CPSR
+30000090:	e3c0001f 	bic	r0, r0, #31
+30000094:	e38000db 	orr	r0, r0, #219	; 0xdb
+30000098:	e129f000 	msr	CPSR_fc, r0
+3000009c:	e3e0d3f1 	mvn	sp, #-1006632957	; 0xc4000003
+300000a0:	e10f0000 	mrs	r0, CPSR
+300000a4:	e3c0001f 	bic	r0, r0, #31
+300000a8:	e38000df 	orr	r0, r0, #223	; 0xdf
+300000ac:	e129f000 	msr	CPSR_fc, r0
+300000b0:	e59fd054 	ldr	sp, [pc, #84]	; 3000010c <fiq+0x10>
+
+300000b4 <_clear_bss>:
+300000b4:	e59f0020 	ldr	r0, [pc, #32]	; 300000dc <_bss_start>
+300000b8:	e59f1020 	ldr	r1, [pc, #32]	; 300000e0 <_bss_end>
+300000bc:	e3a02000 	mov	r2, #0
+300000c0:	e1500001 	cmp	r0, r1
+300000c4:	0a000001 	beq	300000d0 <__main>
+300000c8:	e4802004 	str	r2, [r0], #4
+300000cc:	eafffffb 	b	300000c0 <_clear_bss+0xc>
+
+300000d0 <__main>:
+300000d0:	eb000022 	bl	30000160 <main>
+
+300000d4 <halt>:
+300000d4:	eafffffe 	b	300000d4 <halt>
+
+300000d8 <_main>:
+300000d8:	30000160 	.word	0x30000160
+
+300000dc <_bss_start>:
+300000dc:	300001c0 	.word	0x300001c0
+
+300000e0 <_bss_end>:
+300000e0:	300001c0 	.word	0x300001c0
+
+300000e4 <undefine_instruction>:
+300000e4:	e1a00000 	nop			; (mov r0, r0)
+
+300000e8 <soft_interrupt>:
+300000e8:	e1a00000 	nop			; (mov r0, r0)
+
+300000ec <prefetch_abort>:
+300000ec:	e1a00000 	nop			; (mov r0, r0)
+
+300000f0 <data_abort>:
+300000f0:	e1a00000 	nop			; (mov r0, r0)
+
+300000f4 <not_used>:
+300000f4:	e1a00000 	nop			; (mov r0, r0)
+
+300000f8 <irq>:
+300000f8:	e1a00000 	nop			; (mov r0, r0)
+
+300000fc <fiq>:
+300000fc:	e1a00000 	nop			; (mov r0, r0)
+30000100:	3efffffc 	.word	0x3efffffc
+30000104:	3dfffffc 	.word	0x3dfffffc
+30000108:	3cfffffc 	.word	0x3cfffffc
+3000010c:	3afffffc 	.word	0x3afffffc
+
+30000110 <puts>:
+30000110:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+30000114:	e28db000 	add	fp, sp, #0
+30000118:	e24dd00c 	sub	sp, sp, #12
+3000011c:	e50b0008 	str	r0, [fp, #-8]
+30000120:	ea000006 	b	30000140 <puts+0x30>
+30000124:	e59f3030 	ldr	r3, [pc, #48]	; 3000015c <puts+0x4c>
+30000128:	e51b2008 	ldr	r2, [fp, #-8]
+3000012c:	e5d22000 	ldrb	r2, [r2]
+30000130:	e5832000 	str	r2, [r3]
+30000134:	e51b3008 	ldr	r3, [fp, #-8]
+30000138:	e2833001 	add	r3, r3, #1
+3000013c:	e50b3008 	str	r3, [fp, #-8]
+30000140:	e51b3008 	ldr	r3, [fp, #-8]
+30000144:	e5d33000 	ldrb	r3, [r3]
+30000148:	e3530000 	cmp	r3, #0
+3000014c:	1afffff4 	bne	30000124 <puts+0x14>
+30000150:	e28bd000 	add	sp, fp, #0
+30000154:	e8bd0800 	ldmfd	sp!, {fp}
+30000158:	e12fff1e 	bx	lr
+3000015c:	50000020 	.word	0x50000020
+
+30000160 <main>:
+30000160:	e92d4800 	push	{fp, lr}
+30000164:	e28db004 	add	fp, sp, #4
+30000168:	e59f300c 	ldr	r3, [pc, #12]	; 3000017c <main+0x1c>
+3000016c:	e5933000 	ldr	r3, [r3]
+30000170:	e1a00003 	mov	r0, r3
+30000174:	ebffffe5 	bl	30000110 <puts>
+30000178:	e8bd8800 	pop	{fp, pc}
+3000017c:	300001a0 	.word	0x300001a0

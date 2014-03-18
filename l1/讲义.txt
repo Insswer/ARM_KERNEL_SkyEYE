@@ -1,0 +1,35 @@
+目标：搭建Skyeye虚拟机环境以及交叉编译链，编写helloworld测试程序测试环境。
+	
+		1) 安装virtualbox，导入虚拟机镜像
+		
+		2) 测试交叉编译链，学习交叉编译链的常用命令（gcc，ld，objdump，objcopy）
+		
+		3) 简要介绍开发平台Skyeye以及S3C2440芯片
+			
+		4) 编写一个helloworld程序
+		
+		5) 使用codeblock，搭建IDE开发环境
+		
+		
+		
+(1) 源代码见src。
+			
+(2)skyeye的命令：
+敲入skyeye启动，也可以skyeye -e [可执行文件]
+进入界面后，敲入start可以启动cpu，然后敲入run就可以加载程序运行
+			
+(3)skyeye的配置脚本：
+
+#cpu类型
+cpu:  arm920t
+#soc类型
+mach: s3c2440
+  
+#physical memory
+#bank6
+mem_bank: map=M, type=RW, addr=0x30000000, size=0x08000000, file=./helloworld.bin, boot=yes
+mem_bank: map=M, type=RW, addr=0x40000000, size=0x08000000
+mem_bank: map=I, type=RW, addr=0x48000000, size=0x20000000
+uart:mod = term
+
+

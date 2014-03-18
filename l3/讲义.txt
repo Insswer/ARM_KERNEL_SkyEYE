@@ -1,0 +1,1 @@
+	3. 简单学习常用ARM指令集，学习ARM汇编与C交叉混合调用的EABI接口协议规范。			1) 学习ARM的通用寄存器(r0-r15)和CPSR寄存器用法和功能				2) 学习ARM常用指令：mov/mrs/msr/mcr/mrc cmp bic add sub b/bl ldr/str ldm/stm nop				(1)	r0-r12：通用寄存器	r13: 又称sp，堆栈指针，ARM为满递减的栈，介绍栈的类型。	r14: 又称lr，链接寄存器，用于保存各种返回地址，比如函数调用，中断等等。	r15: 又称pc，程序指针，保存即将被取值的指令的地址。由于ARM流水线的影响实际pc = pc + 8	cpsr/spsr: 见资料图	

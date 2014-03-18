@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="Makefile" open="1" top="0" tabpos="9">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="arch/mmu.c" open="1" top="0" tabpos="7">
+		<Cursor position="3634" topLine="88" />
+	</File>
+	<File name="include/arch/io.h" open="1" top="0" tabpos="6">
+		<Cursor position="0" topLine="36" />
+	</File>
+	<File name="include/bitops.h" open="1" top="0" tabpos="11">
+		<Cursor position="61" topLine="0" />
+	</File>
+	<File name="include/init.h" open="1" top="0" tabpos="8">
+		<Cursor position="562" topLine="6" />
+	</File>
+	<File name="include/page.h" open="1" top="0" tabpos="3">
+		<Cursor position="252" topLine="0" />
+	</File>
+	<File name="include/slab.h" open="1" top="0" tabpos="2">
+		<Cursor position="1526" topLine="33" />
+	</File>
+	<File name="kernel/Makefile" open="1" top="0" tabpos="5">
+		<Cursor position="88" topLine="0" />
+	</File>
+	<File name="kernel/main.c" open="1" top="0" tabpos="13">
+		<Cursor position="1653" topLine="56" />
+	</File>
+	<File name="kernel/page.c" open="1" top="0" tabpos="4">
+		<Cursor position="9382" topLine="306" />
+	</File>
+	<File name="kernel/slab.c" open="1" top="0" tabpos="1">
+		<Cursor position="394" topLine="78" />
+	</File>
+	<File name="kernel/task.c" open="1" top="1" tabpos="14">
+		<Cursor position="3542" topLine="140" />
+	</File>
+	<File name="lib/Makefile" open="1" top="0" tabpos="10">
+		<Cursor position="147" topLine="0" />
+	</File>
+	<File name="lib/bitops.c" open="1" top="0" tabpos="12">
+		<Cursor position="285" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>

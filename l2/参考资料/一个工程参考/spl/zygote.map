@@ -1,0 +1,223 @@
+Archive member included because of file (symbol)
+
+cpu/libcpu.a(cpu.o)           cpu/start.o (s_init)
+cpu/libcpu.a(clocks.o)        cpu/libcpu.a(cpu.o) (prcm_init)
+cpu/libcpu.a(ddr.o)           cpu/libcpu.a(cpu.o) (ddr_init)
+cpu/libcpu.a(emif.o)          cpu/libcpu.a(ddr.o) (reset_phy)
+cpu/libcpu.a(rom_hal.o)       cpu/libcpu.a(cpu.o) (omap_smc_rom)
+lib/libarm.a(io.o)            cpu/libcpu.a(clocks.o) (sr32)
+drivers/libdriver.a(ns16550.o)
+                              cpu/libcpu.a(cpu.o) (setup_console)
+drivers/libdriver.a(led.o)    cpu/libcpu.a(cpu.o) (init_gpio_led)
+board/libboard.a(panda.o)     cpu/libcpu.a(cpu.o) (set_muxconf_regs)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x40300000                . = 0x40300000
+                0x40300000                TEXT_BASE = .
+                0x40300000                . = ALIGN (0x4)
+
+.text           0x40300000     0x2b14
+ cpu/start.o(.text)
+ .text          0x40300000       0xe0 cpu/start.o
+                0x40300000                _start
+                0x40300044                _end_vect
+                0x40300050                _bss_start
+                0x40300054                _bss_end
+ *(.text)
+ .text          0x403000e0      0x3a0 cpu/libcpu.a(cpu.o)
+                0x4030018c                cortex_a9_rev
+                0x40300194                omap_revision
+                0x40300280                s_init
+                0x40300340                get_device_type
+                0x40300354                cpu_init
+ .text          0x40300480     0x1884 cpu/libcpu.a(clocks.o)
+                0x40300480                configure_core_dpll_no_lock
+                0x40300698                lock_core_dpll
+                0x403006d4                lock_core_dpll_shadow
+                0x403007e4                prcm_init
+ .text          0x40301d04      0x34c cpu/libcpu.a(ddr.o)
+                0x40301d04                do_ddr_init
+                0x40301f10                ddr_init
+ .text          0x40302050      0x16c cpu/libcpu.a(emif.o)
+                0x40302050                reset_phy
+                0x40302060                emif_config
+ .text          0x403021bc       0x20 cpu/libcpu.a(rom_hal.o)
+                0x403021bc                omap_smc_rom
+ .text          0x403021dc       0xbc lib/libarm.a(io.o)
+                0x403021dc                sr32
+                0x40302204                wait_on_value
+ .text          0x40302298      0x128 drivers/libdriver.a(ns16550.o)
+                0x40302298                ns16550_init
+                0x40302304                setup_console
+                0x40302338                ns16550_putc
+                0x4030236c                putc
+                0x40302374                puts
+                0x4030239c                ns16550_getc
+ .text          0x403023c0      0x1b4 drivers/libdriver.a(led.o)
+                0x403023c0                init_gpio_clk
+                0x403023fc                init_pad_control
+                0x40302430                init_gpio_led
+                0x403024f4                led_on
+                0x40302534                led_off
+ .text          0x40302574      0x5a0 board/libboard.a(panda.o)
+                0x40302574                set_muxconf_regs
+
+.glue_7         0x40302b14        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x40302b14        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x40302b14        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x40302b14        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x40302b14        0x0
+ .iplt          0x00000000        0x0 cpu/start.o
+                0x40302b14                . = ALIGN (0x4)
+
+.rodata         0x40302b14      0x108
+ *(.rodata)
+ .rodata        0x40302b14        0xc cpu/libcpu.a(cpu.o)
+ .rodata        0x40302b20       0xfc cpu/libcpu.a(clocks.o)
+                0x40302b20                per_dpll_param
+
+.rel.dyn        0x40302c1c        0x0
+ .rel.iplt      0x00000000        0x0 cpu/start.o
+                0x40302c1c                . = ALIGN (0x4)
+
+.data           0x40302c1c      0xdc8
+ *(.data)
+ .data          0x40302c1c        0x0 cpu/start.o
+ .data          0x40302c1c        0x0 cpu/libcpu.a(cpu.o)
+ .data          0x40302c1c      0xccc cpu/libcpu.a(clocks.o)
+                0x40302c1c                core_dpll_param_l3_190
+                0x40302d18                core_dpll_param
+                0x40302e14                core_dpll_param_ddr400
+                0x40302f10                mpu_dpll_param_800mhz
+                0x4030300c                mpu_dpll_param_700mhz
+                0x40303108                mpu_dpll_param_600mhz
+                0x40303204                iva_dpll_param
+                0x40303300                abe_dpll_param
+                0x403033fc                usb_dpll_param
+                0x403034f8                core_dpll_param_ddr466
+                0x403035f4                mpu_dpll_param_1_5ghz
+                0x403036f0                mpu_dpll_param_920mhz
+                0x403037ec                mpu_dpll_param_1008mhz
+ .data          0x403038e8       0xfc cpu/libcpu.a(ddr.o)
+                0x403038e8                ddr_regs_elpida2G_380_mhz
+                0x4030390c                ddr_regs_elpida2G_200_mhz_2cs
+                0x40303930                ddr_regs_elpida2G_400_mhz_2cs
+                0x40303954                ddr_regs_elpida4G_400_mhz_1cs
+                0x40303978                ddr_regs_elpida2G_200_mhz
+                0x4030399c                ddr_regs_elpida4G_466_mhz_1cs
+                0x403039c0                ddr_regs_elpida2G_400_mhz
+ .data          0x403039e4        0x0 cpu/libcpu.a(emif.o)
+ .data          0x403039e4        0x0 cpu/libcpu.a(rom_hal.o)
+ .data          0x403039e4        0x0 lib/libarm.a(io.o)
+ .data          0x403039e4        0x0 drivers/libdriver.a(ns16550.o)
+ .data          0x403039e4        0x0 drivers/libdriver.a(led.o)
+ .data          0x403039e4        0x0 board/libboard.a(panda.o)
+
+.igot.plt       0x403039e4        0x0
+ .igot.plt      0x00000000        0x0 cpu/start.o
+                0x403039e4                . = ALIGN (0x4)
+
+.got
+ *(.got)
+                0x403039e4                . = ALIGN (0x4)
+                0x403039e4                __bss_start = .
+
+.bss            0x403039e4        0x0
+ *(.bss)
+ .bss           0x403039e4        0x0 cpu/start.o
+ .bss           0x403039e4        0x0 cpu/libcpu.a(cpu.o)
+ .bss           0x403039e4        0x0 cpu/libcpu.a(clocks.o)
+ .bss           0x403039e4        0x0 cpu/libcpu.a(ddr.o)
+ .bss           0x403039e4        0x0 cpu/libcpu.a(emif.o)
+ .bss           0x403039e4        0x0 cpu/libcpu.a(rom_hal.o)
+ .bss           0x403039e4        0x0 lib/libarm.a(io.o)
+ .bss           0x403039e4        0x0 drivers/libdriver.a(ns16550.o)
+ .bss           0x403039e4        0x0 drivers/libdriver.a(led.o)
+ .bss           0x403039e4        0x0 board/libboard.a(panda.o)
+                0x403039e4                __bss_end = .
+                0x403039e4                _end = .
+LOAD cpu/start.o
+START GROUP
+LOAD board/libboard.a
+LOAD cpu/libcpu.a
+LOAD lib/libarm.a
+LOAD drivers/libdriver.a
+LOAD common/libcommon.a
+END GROUP
+LOAD libgcc
+OUTPUT(zygote elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x10
+ .ARM.attributes
+                0x00000000       0x10 cpu/start.o
+ .ARM.attributes
+                0x00000010       0x10 cpu/libcpu.a(cpu.o)
+ .ARM.attributes
+                0x00000020       0x10 cpu/libcpu.a(clocks.o)
+ .ARM.attributes
+                0x00000030       0x10 cpu/libcpu.a(ddr.o)
+ .ARM.attributes
+                0x00000040       0x10 cpu/libcpu.a(emif.o)
+ .ARM.attributes
+                0x00000050       0x10 cpu/libcpu.a(rom_hal.o)
+ .ARM.attributes
+                0x00000060       0x10 lib/libarm.a(io.o)
+ .ARM.attributes
+                0x00000070       0x10 drivers/libdriver.a(ns16550.o)
+ .ARM.attributes
+                0x00000080       0x10 drivers/libdriver.a(led.o)
+ .ARM.attributes
+                0x00000090       0x10 board/libboard.a(panda.o)
+
+.comment        0x00000000       0x30
+ .comment       0x00000000       0x30 cpu/libcpu.a(cpu.o)
+                                 0x31 (size before relaxing)
+ .comment       0x00000000       0x31 cpu/libcpu.a(clocks.o)
+ .comment       0x00000000       0x31 cpu/libcpu.a(ddr.o)
+ .comment       0x00000000       0x31 cpu/libcpu.a(emif.o)
+ .comment       0x00000000       0x31 lib/libarm.a(io.o)
+ .comment       0x00000000       0x31 drivers/libdriver.a(ns16550.o)
+ .comment       0x00000000       0x31 drivers/libdriver.a(led.o)
+ .comment       0x00000000       0x31 board/libboard.a(panda.o)
+
+.note.GNU-stack
+                0x00000000        0x0
+ .note.GNU-stack
+                0x00000000        0x0 cpu/libcpu.a(cpu.o)
+ .note.GNU-stack
+                0x00000000        0x0 cpu/libcpu.a(clocks.o)
+ .note.GNU-stack
+                0x00000000        0x0 cpu/libcpu.a(ddr.o)
+ .note.GNU-stack
+                0x00000000        0x0 cpu/libcpu.a(emif.o)
+ .note.GNU-stack
+                0x00000000        0x0 lib/libarm.a(io.o)
+ .note.GNU-stack
+                0x00000000        0x0 drivers/libdriver.a(ns16550.o)
+ .note.GNU-stack
+                0x00000000        0x0 drivers/libdriver.a(led.o)
+ .note.GNU-stack
+                0x00000000        0x0 board/libboard.a(panda.o)
+
+.stab           0x00000000      0x258
+ .stab          0x00000000      0x1ec cpu/start.o
+ .stab          0x000001ec       0x6c cpu/libcpu.a(rom_hal.o)
+                                 0x78 (size before relaxing)
+
+.stabstr        0x00000000       0x47
+ .stabstr       0x00000000       0x47 cpu/start.o

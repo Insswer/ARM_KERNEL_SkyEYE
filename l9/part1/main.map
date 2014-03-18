@@ -1,0 +1,251 @@
+Archive member included because of file (symbol)
+
+/home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_udivsi3.o)
+                              arch/printf.o (__udivsi3)
+/home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_umodsi3.o)
+                              arch/printf.o (__umodsi3)
+/home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_dvmd_tls.o)
+                              /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_udivsi3.o) (__div0)
+
+Allocating common symbols
+Common symbol       size              file
+
+page_table_end      0x4               arch/mmu.o
+list_groups         0x78              kernel/main.o
+irq_descs           0x300             arch/int_control.o
+ttb_page_entry      0x4               arch/mmu.o
+coarse_page_entry   0x4               arch/mmu.o
+irq_act             0xc               arch/int_control.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x30000000                . = 0x30000000
+
+.text           0x30000000     0x3648
+ *(.vector)
+ .vector        0x30000000       0x40 arch/start.o
+                0x30000000                _start
+                0x30001000                . = ALIGN (0x1000)
+ *fill*         0x30000040      0xfc0 00
+ arch/start.o(.text)
+ .text          0x30001000      0x198 arch/start.o
+ *(.text)
+ .text          0x30001198       0x40 arch/entry.o
+                0x30001198                __get_cp15_control
+                0x300011a0                __set_cp15_control
+                0x300011a8                __set_ttb_reg
+                0x300011b0                __set_domain_reg
+                0x300011b8                __enable_int
+                0x300011c8                __disable_int
+ .text          0x300011d8      0x244 arch/exception.o
+                0x300011d8                debug_exception
+                0x30001284                identify_and_clear
+                0x300012b4                do_irq
+                0x300013dc                debug
+                0x300013f4                swi_exception
+ .text          0x3000141c      0x480 arch/int_control.o
+                0x3000158c                ack_int
+                0x30001600                read_int
+                0x30001680                enable_int
+                0x300016ec                disable_int
+                0x30001754                request_irq
+ .text          0x3000189c      0x5d8 arch/mmu.o
+                0x3000189c                alloc_page_table
+                0x30001918                build_section
+                0x30001b38                build_small_page_tbl
+                0x30001c0c                build_small_pages
+                0x30001cb8                init_mmu
+ .text          0x30001e74      0xf8c arch/printf.o
+                0x30001e74                putc
+                0x30001eb0                puts
+                0x30001ef8                putc_raw
+                0x30001f34                puts_raw
+                0x30001f7c                raise
+                0x30002d48                printf
+                0x30002da4                printf_raw
+ .text          0x30002e00      0x1a8 arch/timer.o
+ .text          0x30002fa8      0x32c kernel/main.o
+                0x30003278                start_kernel
+ .text          0x300032d4        0x8 kernel/swi.o
+                0x300032d4                __swi_1
+ .text          0x300032dc      0x18c lib/string.o
+                0x300032dc                strnlen
+                0x3000335c                memcpy
+                0x300033ec                memset
+ .text          0x30003468      0x110 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_udivsi3.o)
+                0x30003468                __udivsi3
+                0x30003468                __aeabi_uidiv
+                0x30003560                __aeabi_uidivmod
+ .text          0x30003578       0xcc /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_umodsi3.o)
+                0x30003578                __umodsi3
+ .text          0x30003644        0x4 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_dvmd_tls.o)
+                0x30003644                __aeabi_ldiv0
+                0x30003644                __div0
+                0x30003644                __aeabi_idiv0
+
+.rodata         0x30003648      0x2cc
+ .rodata        0x30003648       0xd8 arch/exception.o
+ .rodata        0x30003720       0x60 arch/int_control.o
+ .rodata        0x30003780       0xb8 arch/mmu.o
+ .rodata        0x30003838       0x58 arch/printf.o
+ .rodata        0x30003890       0x48 arch/timer.o
+ .rodata        0x300038d8       0x3c kernel/main.o
+
+.glue_7         0x30003914        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x30003914        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x30003914        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x30003914        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+                0x30003920                . = ALIGN (0x20)
+
+.init.text
+ *(.init.text)
+                0x30003920                __init_start_arch = .
+
+.initcall_arch  0x30003920        0x8
+ *(.initcall_arch)
+ .initcall_arch
+                0x30003920        0x4 arch/int_control.o
+ .initcall_arch
+                0x30003924        0x4 arch/timer.o
+                0x30003928                __init_end_arch = .
+                0x30003928                __init_start_subsys = .
+
+.initcall_subsys
+ *(.initcall_subsys)
+                0x30003928                __init_end_subsys = .
+                0x30003940                . = ALIGN (0x20)
+
+.data           0x30003940        0x8
+ *(.data)
+ .data          0x30003940        0x0 arch/start.o
+ .data          0x30003940        0x0 arch/entry.o
+ .data          0x30003940        0x0 arch/exception.o
+ .data          0x30003940        0x0 arch/int_control.o
+ .data          0x30003940        0x0 arch/mmu.o
+ .data          0x30003940        0x0 arch/printf.o
+ .data          0x30003940        0x0 arch/timer.o
+ .data          0x30003940        0x8 kernel/main.o
+                0x30003940                list_group_head
+ .data          0x30003948        0x0 kernel/swi.o
+ .data          0x30003948        0x0 lib/string.o
+ .data          0x30003948        0x0 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_udivsi3.o)
+ .data          0x30003948        0x0 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_umodsi3.o)
+ .data          0x30003948        0x0 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_dvmd_tls.o)
+                0x30003960                . = ALIGN (0x20)
+                0x30003960                __bss_start__ = .
+
+.bss            0x30003960      0x394
+ *(.bss)
+ .bss           0x30003960        0x0 arch/start.o
+ .bss           0x30003960        0x0 arch/entry.o
+ .bss           0x30003960        0x0 arch/exception.o
+ .bss           0x30003960        0x0 arch/int_control.o
+ .bss           0x30003960        0x0 arch/mmu.o
+ .bss           0x30003960        0x0 arch/printf.o
+ .bss           0x30003960        0x4 arch/timer.o
+ .bss           0x30003964        0x0 kernel/main.o
+ .bss           0x30003964        0x0 kernel/swi.o
+ .bss           0x30003964        0x0 lib/string.o
+ .bss           0x30003964        0x0 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_udivsi3.o)
+ .bss           0x30003964        0x0 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_umodsi3.o)
+ .bss           0x30003964        0x0 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_dvmd_tls.o)
+ COMMON         0x30003964      0x30c arch/int_control.o
+                0x30003964                irq_descs
+                0x30003c64                irq_act
+ COMMON         0x30003c70        0xc arch/mmu.o
+                0x30003c70                page_table_end
+                0x30003c74                ttb_page_entry
+                0x30003c78                coarse_page_entry
+ COMMON         0x30003c7c       0x78 kernel/main.o
+                0x30003c7c                list_groups
+                0x30003cf4                __bss_end__ = .
+LOAD arch/entry.o
+LOAD arch/exception.o
+LOAD arch/int_control.o
+LOAD arch/mmu.o
+LOAD arch/printf.o
+LOAD arch/start.o
+LOAD arch/timer.o
+LOAD kernel/main.o
+LOAD kernel/swi.o
+LOAD lib/string.o
+LOAD /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a
+OUTPUT(main.elf elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x10
+ .ARM.attributes
+                0x00000000       0x10 arch/start.o
+ .ARM.attributes
+                0x00000010       0x10 arch/entry.o
+ .ARM.attributes
+                0x00000020       0x10 arch/exception.o
+ .ARM.attributes
+                0x00000030       0x10 arch/int_control.o
+ .ARM.attributes
+                0x00000040       0x10 arch/mmu.o
+ .ARM.attributes
+                0x00000050       0x10 arch/printf.o
+ .ARM.attributes
+                0x00000060       0x10 arch/timer.o
+ .ARM.attributes
+                0x00000070       0x10 kernel/main.o
+ .ARM.attributes
+                0x00000080       0x10 kernel/swi.o
+ .ARM.attributes
+                0x00000090       0x10 lib/string.o
+ .ARM.attributes
+                0x000000a0       0x10 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x000000b0       0x10 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_umodsi3.o)
+ .ARM.attributes
+                0x000000c0       0x10 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_dvmd_tls.o)
+
+.comment        0x00000000       0x11
+ .comment       0x00000000       0x11 arch/exception.o
+                                 0x12 (size before relaxing)
+ .comment       0x00000000       0x12 arch/int_control.o
+ .comment       0x00000000       0x12 arch/mmu.o
+ .comment       0x00000000       0x12 arch/printf.o
+ .comment       0x00000000       0x12 arch/timer.o
+ .comment       0x00000000       0x12 kernel/main.o
+ .comment       0x00000000       0x12 lib/string.o
+
+.debug_frame    0x00000000       0x50
+ .debug_frame   0x00000000       0x28 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_udivsi3.o)
+ .debug_frame   0x00000028       0x28 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_umodsi3.o)
+
+.debug_line     0x00000000      0x17f
+ .debug_line    0x00000000       0x96 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_udivsi3.o)
+ .debug_line    0x00000096       0x7f /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_umodsi3.o)
+ .debug_line    0x00000115       0x6a /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_dvmd_tls.o)
+
+.debug_info     0x00000000      0x1b0
+ .debug_info    0x00000000       0x90 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_udivsi3.o)
+ .debug_info    0x00000090       0x90 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_umodsi3.o)
+ .debug_info    0x00000120       0x90 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_dvmd_tls.o)
+
+.debug_abbrev   0x00000000       0x3c
+ .debug_abbrev  0x00000000       0x14 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_udivsi3.o)
+ .debug_abbrev  0x00000014       0x14 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_umodsi3.o)
+ .debug_abbrev  0x00000028       0x14 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_dvmd_tls.o)
+
+.debug_aranges  0x00000000       0x60
+ .debug_aranges
+                0x00000000       0x20 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_udivsi3.o)
+ .debug_aranges
+                0x00000020       0x20 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_umodsi3.o)
+ .debug_aranges
+                0x00000040       0x20 /home/ilovelinux/gcc/gcc_tool/bin/../lib/gcc/arm-elf/4.4.3/libgcc.a(_dvmd_tls.o)
